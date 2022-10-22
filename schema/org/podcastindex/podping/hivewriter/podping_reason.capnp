@@ -4,4 +4,5 @@ enum PodpingReason {
     update @0;
     live @1;
     liveEnd @2;
+    newIRI @3;
 }

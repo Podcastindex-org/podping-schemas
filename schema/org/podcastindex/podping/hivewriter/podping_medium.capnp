@@ -2,10 +2,23 @@
 
 enum PodpingMedium {
     podcast @0;
-    music @1;
-    video @2;
-    film @3;
-    audiobook @4;
-    newsletter @5;
-    blog @6;
+    podcastL @1;
+
+    music @2;
+    musicL @3;
+
+    video @4;
+    videoL @5;
+
+    film @6;
+    filmL @7;
+
+    audiobook @8;
+    audiobookL @9;
+
+    newsletter @10;
+    newsletterL @11;
+
+    blog @12;
+    blogL @13;
 }
