@@ -1,0 +1,31 @@
+
+
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Podping",
+    "type": "object",
+    "properties": {
+        "version": {
+            "type": "string"
+        },
+        "medium": {
+            "type": "string"
+        },
+        "reason": {
+            "type": "string"
+        },
+        "iris": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        }
+    },
+    "required": [
+        "version",
+        "medium",
+        "reason",
+        "iris"
+    ]
+}
+
