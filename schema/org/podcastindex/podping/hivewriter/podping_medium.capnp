@@ -21,4 +21,6 @@ enum PodpingMedium {
 
     blog @12;
     blogL @13;
+
+    mixed @14;
 }
