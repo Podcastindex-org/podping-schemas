@@ -1,26 +1,26 @@
 @0xedda8f1fc8b626fe;
 
 enum PodpingMedium {
-    podcast @0;
-    podcastL @1;
+    mixed @0;
 
-    music @2;
-    musicL @3;
+    podcast @1;
+    podcastL @2;
 
-    video @4;
-    videoL @5;
+    music @3;
+    musicL @4;
 
-    film @6;
-    filmL @7;
+    video @5;
+    videoL @6;
 
-    audiobook @8;
-    audiobookL @9;
+    film @7;
+    filmL @8;
 
-    newsletter @10;
-    newsletterL @11;
+    audiobook @9;
+    audiobookL @10;
 
-    blog @12;
-    blogL @13;
+    newsletter @11;
+    newsletterL @12;
 
-    mixed @14;
+    blog @13;
+    blogL @14;
 }
