@@ -1,108 +1,241 @@
 {
-    "$schema": "http://json-schema.org/draft-04/schema#",
+    "$schema": "http://json-schema.org/draft-06/schema#",
     "title": "Podping",
     "type": "object",
-    "properties": {
-        "version": {
-            "type": "string"
+    "oneOf": [
+        {
+            "$ref": "#/definitions/podping-v0"
         },
-        "medium": {
-            "oneOf": [
-                {
-                    "title": "mixed",
-                    "type": "string"
-                },
-                {
-                    "title": "podcast",
-                    "type": "string"
-                },
-                {
-                    "title": "podcastL",
-                    "type": "string"
-                },
-                {
-                    "title": "music",
-                    "type": "string"
-                },
-                {
-                    "title": "musicL",
-                    "type": "string"
-                },
-                {
-                    "title": "video",
-                    "type": "string"
-                },
-                {
-                    "title": "videoL",
-                    "type": "string"
-                },
-                {
-                    "title": "film",
-                    "type": "string"
-                },
-                {
-                    "title": "filmL",
-                    "type": "string"
-                },
-                {
-                    "title": "audiobook",
-                    "type": "string"
-                },
-                {
-                    "title": "audiobookL",
-                    "type": "string"
-                },
-                {
-                    "title": "newsletter",
-                    "type": "string"
-                },
-                {
-                    "title": "newsletterL",
-                    "type": "string"
-                },
-                {
-                    "title": "blog",
-                    "type": "string"
-                },
-                {
-                    "title": "blogL",
-                    "type": "string"
-                }
-            ]
+        {
+            "$ref": "#/definitions/podping-v0.2"
         },
-        "reason": {
-            "oneOf": [
-                {
-                    "title": "update",
-                    "type": "string"
-                },
-                {
-                    "title": "live",
-                    "type": "string"
-                },
-                {
-                    "title": "liveEnd",
-                    "type": "string"
-                }
-            ]
+        {
+            "$ref": "#/definitions/podping-v0.3"
         },
-        "iris": {
-            "type": "array",
-            "items": {
-                "type": "string"
-            }
+        {
+            "$ref": "#/definitions/podping-v1.0"
         },
-        "timestampNs": {
-            "type": "integer"
-        },
-        "sessionId": {
-            "type": "integer"
+        {
+            "$ref": "#/definitions/podping-v1.1"
         }
-    },
-    "required": [
-        "version",
-        "medium",
-        "reason",
-        "iris"
-    ]
+    ],
+    "definitions": {
+        "podping-v0": {
+            "properties": {
+                "url": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "url"
+            ]
+        },
+        "podping-v0.2": {
+            "oneOf": [
+                {
+                    "properties": {
+                        "version": {
+                            "const": "0.2",
+                            "type": "string"
+                        },
+                        "num_urls": {
+                            "const": 1,
+                            "type": "integer"
+                        },
+                        "url": {
+                            "format": "uri",
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "version",
+                        "num_urls",
+                        "url"
+                    ]
+                },
+                {
+                    "properties": {
+                        "version": {
+                            "const": "0.2",
+                            "type": "string"
+                        },
+                        "num_urls": {
+                            "minimum": 1,
+                            "type": "integer"
+                        },
+                        "urls": {
+                            "items": {
+                                "format": "uri",
+                                "type": "string"
+                            },
+                            "type": "array"
+                        }
+                    },
+                    "required": [
+                        "version",
+                        "num_urls",
+                        "urls"
+                    ]
+                }
+            ]
+        },
+        "podping-v0.3": {
+            "oneOf": [
+                {
+                    "properties": {
+                        "version": {
+                            "const": "0.3",
+                            "type": "string"
+                        },
+                        "num_urls": {
+                            "const": 1,
+                            "type": "integer"
+                        },
+                        "reason": {
+                            "const": "feed_update",
+                            "type": "string"
+                        },
+                        "url": {
+                            "format": "uri",
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "version",
+                        "num_urls",
+                        "reason",
+                        "url"
+                    ]
+                },
+                {
+                    "properties": {
+                        "version": {
+                            "const": "0.3",
+                            "type": "string"
+                        },
+                        "num_urls": {
+                            "minimum": 1,
+                            "type": "integer"
+                        },
+                        "reason": {
+                            "const": "feed_update",
+                            "type": "string"
+                        },
+                        "urls": {
+                            "items": {
+                                "format": "uri",
+                                "type": "string"
+                            },
+                            "type": "array"
+                        }
+                    },
+                    "required": [
+                        "version",
+                        "num_urls",
+                        "reason",
+                        "urls"
+                    ]
+                }
+            ]
+        },
+        "mediums-v1.0": {
+            "enum": [
+                "podcast",
+                "music",
+                "video",
+                "film",
+                "audiobook",
+                "newsletter",
+                "blog"
+            ]
+        },
+        "reasons-v1.0": {
+            "enum": [
+                "update",
+                "live",
+                "liveEnd"
+            ]
+        },
+        "podping-v1.0": {
+            "properties": {
+                "version": {
+                    "const": "1.0",
+                    "type": "string"
+                },
+                "medium": {
+                    "$ref": "#/definitions/mediums-v1.0"
+                },
+                "reason": {
+                    "$ref": "#/definitions/reasons-v1.0"
+                },
+                "iris": {
+                    "type": "array",
+                    "items": {
+                        "format": "uri",
+                        "type": "string"
+                    }
+                }
+            },
+            "required": [
+                "version",
+                "medium",
+                "reason",
+                "iris"
+            ]
+        },
+        "mediums-v1.1": {
+            "enum": [
+                "mixed",
+                "podcastL",
+                "musicL",
+                "videoL",
+                "filmL",
+                "audiobookL",
+                "newsletterL",
+                "blogL"
+            ]
+        },
+        "podping-v1.1": {
+            "properties": {
+                "version": {
+                    "const": "1.1",
+                    "type": "string"
+                },
+                "medium": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/mediums-v1.0"
+                        },
+                        {
+                            "$ref": "#/definitions/mediums-v1.1"
+                        }
+                    ]
+                },
+                "reason": {
+                    "$ref": "#/definitions/reasons-v1.0"
+                },
+                "iris": {
+                    "type": "array",
+                    "items": {
+                        "format": "uri",
+                        "type": "string"
+                    }
+                },
+                "timestampNs": {
+                    "type": "integer"
+                },
+                "sessionId": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "version",
+                "medium",
+                "reason",
+                "iris",
+                "timestampNs",
+                "sessionId"
+            ]
+        }
+    }
 }
