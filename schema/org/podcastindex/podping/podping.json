@@ -31,6 +31,17 @@
             ],
             "additionalProperties": false
         },
+        "iri": {
+            "format": "uri",
+            "type": "string"
+        },
+        "iri-list": {
+            "type": "array",
+            "items": {
+                "format": "uri",
+                "type": "string"
+            }
+        },
         "podping-v0.2": {
             "oneOf": [
                 {
@@ -44,8 +55,7 @@
                             "type": "integer"
                         },
                         "url": {
-                            "format": "uri",
-                            "type": "string"
+                            "$ref": "#/definitions/iri"
                         }
                     },
                     "required": [
@@ -66,11 +76,7 @@
                             "type": "integer"
                         },
                         "urls": {
-                            "items": {
-                                "format": "uri",
-                                "type": "string"
-                            },
-                            "type": "array"
+                            "$ref": "#/definitions/iri-list"
                         }
                     },
                     "required": [
@@ -81,6 +87,10 @@
                     "additionalProperties": false
                 }
             ]
+        },
+        "reasons-v0.3": {
+            "const": "feed_update",
+            "type": "string"
         },
         "podping-v0.3": {
             "oneOf": [
@@ -95,12 +105,10 @@
                             "type": "integer"
                         },
                         "reason": {
-                            "const": "feed_update",
-                            "type": "string"
+                            "$ref": "#/definitions/reasons-v0.3"
                         },
                         "url": {
-                            "format": "uri",
-                            "type": "string"
+                            "$ref": "#/definitions/iri"
                         }
                     },
                     "required": [
@@ -122,15 +130,10 @@
                             "type": "integer"
                         },
                         "reason": {
-                            "const": "feed_update",
-                            "type": "string"
+                            "$ref": "#/definitions/reasons-v0.3"
                         },
                         "urls": {
-                            "items": {
-                                "format": "uri",
-                                "type": "string"
-                            },
-                            "type": "array"
+                            "$ref": "#/definitions/iri-list"
                         }
                     },
                     "required": [
@@ -174,11 +177,7 @@
                     "$ref": "#/definitions/reasons-v1.0"
                 },
                 "iris": {
-                    "type": "array",
-                    "items": {
-                        "format": "uri",
-                        "type": "string"
-                    }
+                    "$ref": "#/definitions/iri-list"
                 }
             },
             "required": [
@@ -201,6 +200,11 @@
                 "blogL"
             ]
         },
+        "uint64": {
+            "minimum": 0,
+            "maximum": 18446744073709551615,
+            "type": "integer"
+        },
         "podping-v1.1": {
             "properties": {
                 "version": {
@@ -221,17 +225,13 @@
                     "$ref": "#/definitions/reasons-v1.0"
                 },
                 "iris": {
-                    "type": "array",
-                    "items": {
-                        "format": "uri",
-                        "type": "string"
-                    }
+                    "$ref": "#/definitions/iri-list"
                 },
                 "timestampNs": {
-                    "type": "integer"
+                    "$ref": "#/definitions/uint64"
                 },
                 "sessionId": {
-                    "type": "integer"
+                    "$ref": "#/definitions/uint64"
                 }
             },
             "required": [
