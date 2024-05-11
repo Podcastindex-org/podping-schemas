@@ -28,7 +28,8 @@
             },
             "required": [
                 "url"
-            ]
+            ],
+            "additionalProperties": false
         },
         "podping-v0.2": {
             "oneOf": [
@@ -51,7 +52,8 @@
                         "version",
                         "num_urls",
                         "url"
-                    ]
+                    ],
+                    "additionalProperties": false
                 },
                 {
                     "properties": {
@@ -75,7 +77,8 @@
                         "version",
                         "num_urls",
                         "urls"
-                    ]
+                    ],
+                    "additionalProperties": false
                 }
             ]
         },
@@ -105,7 +108,8 @@
                         "num_urls",
                         "reason",
                         "url"
-                    ]
+                    ],
+                    "additionalProperties": false
                 },
                 {
                     "properties": {
@@ -134,7 +138,8 @@
                         "num_urls",
                         "reason",
                         "urls"
-                    ]
+                    ],
+                    "additionalProperties": false
                 }
             ]
         },
@@ -181,7 +186,8 @@
                 "medium",
                 "reason",
                 "iris"
-            ]
+            ],
+            "additionalProperties": false
         },
         "mediums-v1.1": {
             "enum": [
@@ -235,7 +241,8 @@
                 "iris",
                 "timestampNs",
                 "sessionId"
-            ]
+            ],
+            "additionalProperties": false
         }
     }
 }
