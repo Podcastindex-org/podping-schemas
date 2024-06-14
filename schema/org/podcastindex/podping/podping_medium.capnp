@@ -1,5 +1,9 @@
 @0xedda8f1fc8b626fe;
 
+using Rust = import "rust.capnp";
+
+$Rust.parentModule("org::podcastindex::podping");
+
 enum PodpingMedium {
     mixed @0;
 

@@ -1,5 +1,9 @@
 @0xb804df1ba3cc0461;
 
+using Rust = import "rust.capnp";
+
+$Rust.parentModule("org::podcastindex::podping::hivewriter");
+
 using import "/schema/org/podcastindex/podping/podping.capnp".Podping;
 
 struct PodpingHiveTransaction {

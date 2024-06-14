@@ -1,5 +1,9 @@
 @0xe034fb00fceb07b4;
 
+using Rust = import "rust.capnp";
+
+$Rust.parentModule("org::podcastindex::podping");
+
 using import "/schema/org/podcastindex/podping/podping_medium.capnp".PodpingMedium;
 using import "/schema/org/podcastindex/podping/podping_reason.capnp".PodpingReason;
 
