@@ -1,6 +1,6 @@
 @0xdfd31317d35f60d9;
 
-using Rust = import "rust.capnp";
+using Rust = import "/schema/rust.capnp";
 
 $Rust.parentModule("org::podcastindex::podping");
 
