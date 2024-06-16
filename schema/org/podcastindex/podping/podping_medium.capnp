@@ -27,4 +27,10 @@ enum PodpingMedium {
 
     blog @13;
     blogL @14;
+
+    publisher @15;
+    publisherL @16;
+
+    course @17;
+    courseL @18;
 }

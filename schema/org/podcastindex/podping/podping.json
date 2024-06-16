@@ -197,7 +197,11 @@
                 "filmL",
                 "audiobookL",
                 "newsletterL",
-                "blogL"
+                "blogL",
+                "publisher",
+                "publisherL",
+                "course",
+                "courseL"
             ]
         },
         "uint64": {
